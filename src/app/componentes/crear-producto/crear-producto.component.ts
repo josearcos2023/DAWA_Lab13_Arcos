@@ -10,11 +10,12 @@ import { Producto } from '../../models/producto';
 export class CrearProductoComponent {
 
   productoForm: FormGroup;
-  titulo = 'Crear producto';
+  titulo = 'New book';
 
   constructor(private fb: FormBuilder){
     this.productoForm = this.fb.group({
-      producto: ['', Validators.required],
+      titulo: ['', Validators.required],
+      autor: ['', Validators.required],
       categoria: ['', Validators.required],
       ubicacion: ['', Validators.required],
       precio: ['', Validators.required],
@@ -25,7 +26,8 @@ export class CrearProductoComponent {
 
   agregarProducto() {
     const PRODUCTO:Producto = {
-      nombre: this.productoForm.get('producto')?.value,
+      titulo: this.productoForm.get('titulo')?.value,
+      autor: this.productoForm.get('autor')?.value,
       categoria: this.productoForm.get('categoria')?.value,
       ubicacion: this.productoForm.get('ubicacion')?.value,
       precio: this.productoForm.get('precio')?.value,
