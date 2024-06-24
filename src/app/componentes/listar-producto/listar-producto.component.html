@@ -6,70 +6,34 @@
                     <span class="titulo">Listado de libros</span>
                         <button class="btn btn-outline-warning float-end" routerLink="/crear-producto">Add new book</button>
                         <br><br>
-                        <table class="table table-striped mt-3">
+                        <table *ngIf="listProductos.length > 0" class="table table-striped mt-3">
                             <thead>
                                 <tr>
                                     <th class="title-table"></th>
                                     <th scope="col" class="title-table">Libro</th>
                                     <th scope="col"class="title-table">Autor</th>
                                     <th scope="col" class="title-table">Categoria</th>
-                                    <th scope="col" class="title-table">Ubicación</th>
+                                    <th scope="col" class="title-table">Fecha de Publicación</th>
                                     <th scope="col" class="title-table">Precio</th>
                                     <th scope="col" class="title-table"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let producto of listProductos">
                                     <td class="content-table"></td>
-                                    <td class="content-table">La palabra del mudo</td>
-                                    <td class="content-table">Julio Ramón Ribeyro</td>
-                                    <td class="content-table">Cuento</td>
-                                    <td class="content-table">AR34-2</td>
-                                    <td class="content-table">s/.55</td>
+                                    <td class="content-table">{{ producto.titulo }}</td>
+                                    <td class="content-table">{{ getNombreAutor(producto.autor_id) }}</td>
+                                    <td class="content-table">{{ getNombreCategoria(producto.categoria_id) }}</td>
+                                    <td class="content-table">{{ producto.fecha_publicacion }}</td>
+                                    <td class="content-table">{{ producto.precio | currency:'s/. '}}</td>
                                     <td class="content-table">
-                                        <i [routerLink]="['/editar-producto']" class="fas fa-edit text-primary"></i>
-                                        <i class="fas fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="content-table"></td>
-                                    <td class="content-table">La palabra del mudo</td>
-                                    <td class="content-table">Julio Ramón Ribeyro</td>
-                                    <td class="content-table">Cuento</td>
-                                    <td class="content-table">AR34-2</td>
-                                    <td class="content-table">s/.55</td>
-                                    <td class="content-table">
-                                        <i [routerLink]="['/editar-producto']" class="fas fa-edit text-primary"></i>
-                                        <i class="fas fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="content-table"></td>
-                                    <td class="content-table">La palabra del mudo</td>
-                                    <td class="content-table">Julio Ramón Ribeyro</td>
-                                    <td class="content-table">Cuento</td>
-                                    <td class="content-table">AR34-2</td>
-                                    <td class="content-table">s/.55</td>
-                                    <td class="content-table">
-                                        <i [routerLink]="['/editar-producto']" class="fas fa-edit text-primary"></i>
-                                        <i class="fas fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="content-table"></td>
-                                    <td class="content-table">La palabra del mudo</td>
-                                    <td class="content-table">Julio Ramón Ribeyro</td>
-                                    <td class="content-table">Cuento</td>
-                                    <td class="content-table">AR34-2</td>
-                                    <td class="content-table">s/.55</td>
-                                    <td class="content-table">
-                                        <i [routerLink]="['/editar-producto']" class="fas fa-edit text-primary"></i>
-                                        <i class="fas fa-trash text-danger"></i>
+                                        <i [routerLink]="['/editar-producto', producto.libro_id]" class="fas fa-edit text-primary"></i>
+                                        <i (click)="eliminarProducto(producto.libro_id)" class="fas fa-trash text-danger"></i>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- <h5 style="text-align: start; margin-top: 10px">No hay productos para mostrar</h5> -->
+                        <h5 style="text-align: start; margin-top: 10px" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
                 </div>
             </div>
         </div>

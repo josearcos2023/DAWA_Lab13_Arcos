@@ -9,28 +9,38 @@
                             <input type="text" formControlName="titulo" class="form-control form-control-lg" placeholder="Título">
                             <div class="text-danger" 
                                 *ngIf="productoForm.get('titulo')?.hasError('required') && productoForm.get('titulo')?.touched">
-                            <span>El título del libro <strong>es obligatorio</strong></span>
+                                <span>El título del libro <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="autor" class="form-control form-control-lg" placeholder="Autor">
+                            <div class="form-group">
+                                <select class="form-control" id="autor_id" formControlName="autor_id">
+                                  <option value="" disabled selected>Autor</option>
+                                  <option *ngFor="let autor of autores" [value]="autor.autor_id">{{ autor.nombre }}</option>
+                                </select>
+                            </div>
                             <div class="text-danger" 
-                                *ngIf="productoForm.get('autor')?.hasError('required') && productoForm.get('autor')?.touched">
-                            <span>El título del libro <strong>es obligatorio</strong></span>
+                                *ngIf="productoForm.get('autor_id')?.hasError('required') && productoForm.get('autor_id')?.touched">
+                                <span>El autor del libro <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="categoria" class="form-control form-control-lg" placeholder="Categoría">
+                            <div class="form-group">
+                                <select class="form-control" id="categoria_id" formControlName="categoria_id">
+                                  <option value="" disabled selected>Categoría</option>
+                                  <option *ngFor="let categoria of categorias" [value]="categoria.categoria_id">{{ categoria.categoria_name }}</option>
+                                </select>
+                            </div>
                             <div class="text-danger" 
-                                *ngIf="productoForm.get('categoria')?.hasError('required') && productoForm.get('categoria')?.touched">
-                                <span>La categoria <strong>es obligatoria</strong></span>
+                                *ngIf="productoForm.get('categoria_id')?.hasError('required') && productoForm.get('categoria_id')?.touched">
+                                <span>La categoría <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="ubicacion" class="form-control form-control-lg" placeholder="Ubicación">
+                            <input type="date" formControlName="fecha_publicacion" class="form-control form-control-lg" placeholder="Fecha de publicación">
                             <div class="text-danger" 
-                                *ngIf="productoForm.get('ubicacion')?.hasError('required') && productoForm.get('ubicacion')?.touched">
-                                <span>La ubicación <strong>es obligatoria</strong></span>
+                                *ngIf="productoForm.get('fecha_publicacion')?.hasError('required') && productoForm.get('fecha_publicacion')?.touched">
+                                <span>La fecha de publicación <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">

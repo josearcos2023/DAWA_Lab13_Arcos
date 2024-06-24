@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="card">
+          <div class="card-body">
+            <span class="titulo">Listado de Clientes</span>
+            <button class="btn btn-outline-warning float-end" routerLink="/crear-cliente">Add New Client</button>
+            <br><br>
+            <table *ngIf="listClientes.length > 0" class="table table-striped mt-3">
+              <thead>
+                <tr>
+                  <th scope="col" class="title-table">Nombre</th>
+                  <th scope="col" class="title-table">Apellido</th>
+                  <th scope="col" class="title-table">DNI</th>
+                  <th scope="col" class="title-table"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of listClientes">
+                  <td class="content-table">{{ cliente.nombre }}</td>
+                  <td class="content-table">{{ cliente.apellidos }}</td>
+                  <td class="content-table">{{ cliente.dni }}</td>
+                  <td class="content-table">
+                    <i [routerLink]="['/editar-cliente', cliente.clientes_id]" class="fas fa-edit text-primary"></i>
+                    <i (click)="eliminarCliente(cliente.clientes_id)" class="fas fa-trash text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h5 *ngIf="listClientes.length == 0">No hay clientes para mostrar</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

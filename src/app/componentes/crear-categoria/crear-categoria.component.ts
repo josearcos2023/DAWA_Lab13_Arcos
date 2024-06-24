@@ -23,8 +23,8 @@ export class CrearCategoriaComponent {
 
   agregarCategoria() {
     const Categoria:Categoria = {
-      categoria: this.categoriaForm.get('categoria')?.value,
-      area: this.categoriaForm.get('area')?.value
+      categoria_name: this.categoriaForm.get('categoria_name')?.value,
+      descripcion: this.categoriaForm.get('descripcion')?.value
     }
     console.log(Categoria);
     // console.log(this.CategoriaForm);

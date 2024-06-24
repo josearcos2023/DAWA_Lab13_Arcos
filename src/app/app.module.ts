@@ -10,18 +10,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListarCategoriaComponent } from './componentes/listar-categoria/listar-categoria.component';
 import { CrearCategoriaComponent } from './componentes/crear-categoria/crear-categoria.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { EditarProductoComponent } from './componentes/editar-producto/editar-producto.component';
+import { ListarClientesComponent } from './componentes/listar-clientes/listar-clientes.component';
+import { CrearClientesComponent } from './componentes/crear-clientes/crear-clientes.component';
+import { EditarClientesComponent } from './componentes/editar-clientes/editar-clientes.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CrearProductoComponent,
     ListarProductoComponent,
     ListarCategoriaComponent,
-    CrearCategoriaComponent
+    CrearCategoriaComponent,
+    EditarProductoComponent,
+    ListarClientesComponent,
+    CrearClientesComponent,
+    EditarClientesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     // provideClientHydration()
